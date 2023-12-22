@@ -2,6 +2,13 @@
 
 Simple courier pickuping app made on vanilla javascript.
 
+### Storyline
+
+1. Get courier data input from the user.
+2. Save that courier data in the client browser.
+3. Display that courier data in table form.
+4. Make CRUD operations functionality!
+
 ### Screenshots
 
 > Will be updated shortly!
@@ -9,7 +16,7 @@ Simple courier pickuping app made on vanilla javascript.
 ### TODOs:
 
 - [x] Form validation
-- [ ] Save it to LocalStorage (Storage Options)
+- [x] Save it to LocalStorage (Storage Options)
 - [ ] Show Courier request based on state
 - [ ] Other CRUD Operations
 
