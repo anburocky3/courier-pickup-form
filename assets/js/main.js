@@ -111,34 +111,48 @@ function getAllCourierDatas() {
   const courierDataArr = JSON.parse(courierData);
 
   if (courierDataArr) {
+    const courierCardEl = document.querySelector("#courierCard");
+    courierCardEl.classList.remove("hidden");
+
     //   write those values into the table ui.
     const tableEl = document.querySelector("#courierDataTable");
 
-    const finalData = courierDataArr
-      .map((courierData) => {
-        return `
-    <tr>
-      <td class="px-2 py-1 border">${courierData.name}</td>
-      <td class="px-2 py-1 border">${courierData.mobile}</td>
-      <td class="px-2 py-1 border">${courierData["pickup-date"]}</td>
-      <td class="px-2 py-1 border">${courierData["pickup-area"]}</td>
-      <td class="px-2 py-1 border">
-          <button
-          type="button"
-          class="px-2 py-1 rounded bg-red-500 hover:bg-red-600 text-white text-sm">
-          Delete
-      </button>
-      </td>
-    </tr>
-    `;
-      })
-      .join(" ");
+    const newFinalValue = [];
 
-    console.log(finalData);
+    courierDataArr.map((courierData) => {
+      const trEl = document.createElement("tr");
+      const tdEl = document.createElement("td");
+      const td2El = document.createElement("td");
+      const td3El = document.createElement("td");
+      const td4El = document.createElement("td");
+      const td5El = document.createElement("td");
+      const deleteBtnEl = document.createElement("button");
 
-    tableEl.innerHTML += finalData;
-    //   console.log(courierDataArr);
+      tdEl.classList.add("px-2", "py-1", "border");
+      tdEl.textContent = courierData.name;
 
+      td2El.classList.add("px-2", "py-1", "border");
+      td2El.textContent = courierData.mobile;
+
+      td3El.classList.add("px-2", "py-1", "border");
+      td3El.textContent = courierData["pickup-date"];
+
+      td4El.classList.add("px-2", "py-1", "border");
+      td4El.textContent = courierData["pickup-area"];
+
+      deleteBtnEl.className =
+        "px-2 py-1 rounded bg-red-500 hover:bg-red-600 text-white text-sm";
+      deleteBtnEl.textContent = "Delete";
+
+      td5El.classList.add("px-2", "py-1", "border");
+      td5El.append(deleteBtnEl);
+
+      trEl.append(tdEl, td2El, td3El, td4El, td5El);
+
+      newFinalValue.push(trEl);
+    });
+
+    newFinalValue.forEach((el) => tableEl.append(el));
     // display the UI with those datas.
   } else {
     console.log("No value available on localStorage");
