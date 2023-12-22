@@ -9,23 +9,24 @@ Simple courier pickuping app made on vanilla javascript.
 ### TODOs:
 
 - [x] Form validation
-- [] Save it to LocalStorage (Storage Options)
-- [] Show Courier request based on state
-- [] Other CRUD Operations
+- [ ] Save it to LocalStorage (Storage Options)
+- [ ] Show Courier request based on state
+- [ ] Other CRUD Operations
 
 ## Validation rules
 
-- [] - Client
+1. Client
 
-  - Native browser validation
-  - External Javascript Libraries to validate your form.
+   - Native browser validation
+   - External Javascript Libraries to validate your form.
 
-- [] - Server
+2. Server
 
-  - Code validation on server
+   - Code validation on server
 
-- [] - Database
-  - Columns validation.
+3. Database
+
+   - Columns validation.
 
 ### License: MIT (Do whatever, you want!)
 
