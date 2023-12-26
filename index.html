@@ -3,6 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og:title" content="Courier app to track your request" />
+    <meta
+      property="og:description"
+      content="Track all your courier request in one place. Just try it!"
+    />
+    <meta
+      property="og:image"
+      content="https://cdn.pixabay.com/photo/2016/02/21/20/24/courier-1214227_1280.jpg"
+    />
+
     <title>Courier Request Form</title>
 
     <link rel="stylesheet" href="./assets/css/main.css" />
@@ -27,7 +37,6 @@
               name="mobile"
               class="form-input"
               placeholder="Mobile Number"
-              value="9876543211"
               required
             />
           </div>
@@ -51,6 +60,17 @@
               placeholder="Enter your pickup address"
               required
             ></textarea>
+          </div>
+          <div>
+            <label for="agreements">
+              <input
+                type="checkbox"
+                name="agreements"
+                id="agreements"
+                required
+              />
+              I accept all terms and conditions.
+            </label>
           </div>
           <button
             type="submit"
