@@ -40,3 +40,7 @@ Simple courier pickuping app made on vanilla javascript.
 ### Authors:
 
 - [Anbuselvan Rocky](https://fb.me/anburocky3)
+
+#### Things i did:
+
+- Dates in human readable form.
