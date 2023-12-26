@@ -1,5 +1,6 @@
 import JustValidate from "just-validate";
 import { formatMyDate } from "./utils";
+import { v4 as uuidv4 } from "uuid";
 
 const formEl = document.getElementById("courier-request-form");
 
@@ -79,15 +80,18 @@ validateForm.addField(
 validateForm.onSuccess(() => {
   const formData = new FormData(formEl);
 
-  const formValueObj = Object.fromEntries(formData.entries());
+  formData.append("id", uuidv4());
+  formData.append("createdAt", Date.now());
 
-  const newCourierData = [];
+  const formValueObj = Object.fromEntries(formData.entries());
 
   // Get existing localStorage value, if it's exist!
   const existingCourierData = localStorage.getItem("courierData");
 
   // Parse that string into Javascript value
   const existingCourierArray = JSON.parse(existingCourierData);
+
+  const newCourierData = [];
 
   if (existingCourierArray) {
     // Create a new array and push the existing localstorage value into new array.
@@ -102,6 +106,7 @@ validateForm.onSuccess(() => {
   }
 
   alert("Courier Request submitted successfully!");
+  getAllCourierDatas();
   formEl.reset();
 });
 
@@ -118,16 +123,22 @@ function getAllCourierDatas() {
     //   write those values into the table ui.
     const tableEl = document.querySelector("#courierDataTable");
 
+    tableEl.innerHTML = "";
+
     const newFinalValue = [];
 
-    courierDataArr.map((courierData) => {
+    courierDataArr.map((courierData, index) => {
       const trEl = document.createElement("tr");
       const tdEl = document.createElement("td");
+      const tdCustomerNoEl = document.createElement("td");
       const td2El = document.createElement("td");
       const td3El = document.createElement("td");
       const td4El = document.createElement("td");
       const td5El = document.createElement("td");
       const deleteBtnEl = document.createElement("button");
+
+      tdCustomerNoEl.classList.add("px-2", "py-1", "border");
+      tdCustomerNoEl.textContent = index + 1;
 
       tdEl.classList.add("px-2", "py-1", "border");
       tdEl.textContent = courierData.name;
@@ -148,13 +159,15 @@ function getAllCourierDatas() {
       td5El.classList.add("px-2", "py-1", "border");
       td5El.append(deleteBtnEl);
 
-      trEl.append(tdEl, td2El, td3El, td4El, td5El);
+      trEl.append(tdCustomerNoEl, tdEl, td2El, td3El, td4El, td5El);
 
       newFinalValue.push(trEl);
     });
 
     newFinalValue.forEach((el) => tableEl.append(el));
     // display the UI with those datas.
+    const courierCountEl = document.querySelector("#courierCount");
+    courierCountEl.textContent = newFinalValue.length;
   } else {
     console.log("No value available on localStorage");
   }
